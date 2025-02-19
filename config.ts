@@ -3,9 +3,9 @@ import path from "path";
 import z from "zod";
 import { config } from "dotenv";
 
-config({
-  path: ".env",
-});
+// config({
+//   path: ".env",
+// });
 
 // Check env
 (async () => {
