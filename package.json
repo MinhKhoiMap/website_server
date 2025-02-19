@@ -21,7 +21,7 @@
     "bcrypt": "^5.1.1",
     "date-fns": "^4.1.0",
     "fast-jwt": "^5.0.2",
-    "fastify": "^5.1.0",
+    "fastify": "^5.2.1",
     "fastify-type-provider-zod": "^4.0.2",
     "fastify-zod": "^1.4.0",
     "got": "^14.4.5",
