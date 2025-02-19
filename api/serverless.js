@@ -15,7 +15,6 @@ const app = Fastify({
 app.register(import("../dist/src/app.js"));
 
 export default async (req, res) => {
-  console.log("first");
   await app.ready();
   app.server.emit("request", req, res);
 };

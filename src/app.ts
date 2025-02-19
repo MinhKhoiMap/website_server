@@ -1,6 +1,6 @@
 import path from "path";
 import cors from "@fastify/cors";
-import fastify, { FastifyReply } from "fastify";
+import fastify, { FastifyInstance, FastifyReply } from "fastify";
 import fastifyCookie from "@fastify/cookie";
 import fastifySession from "@fastify/session";
 import fastifyMultipart from "@fastify/multipart";
@@ -21,8 +21,8 @@ import uploadImageRoute from "./routes/upload.route";
 import portalRoute from "./routes/portal.route";
 import studiolabRoute from "./routes/studiolab.route";
 
-async function main() {
-  const server = fastify();
+async function main(server: FastifyInstance) {
+  // const server = fastify();
 
   const whitelist = ["*"];
 
