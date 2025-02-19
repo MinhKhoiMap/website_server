@@ -11,6 +11,8 @@ const app = Fastify({
   logger: true,
 });
 
+console.log("first")
+
 // Register your application as a normal plugin.
 app.register(import("../dist/src/app.js"));
 
