@@ -45,6 +45,7 @@ const configSchema = z.object({
         ? path.normalize(__dirname + dir)
         : path.normalize(__dirname + "/" + dir)
     ),
+  SERVER_HOST_NAME: z.string(),
 });
 
 const configServer = configSchema.safeParse(process.env);
@@ -57,7 +58,7 @@ const envConfig = configServer.data;
 export const API_URL = envConfig.IS_PRODUCTION
   ? envConfig.PRODUCTION_URL
   : `${envConfig.PROTOCOL}://${envConfig.DOMAIN}:${envConfig.PORT}`;
-  
+
 export default envConfig;
 
 declare global {

@@ -1,4 +1,3 @@
-import * as dotenv from "dotenv";
 import path from "path";
 import cors from "@fastify/cors";
 import fastify, { FastifyReply } from "fastify";
@@ -22,8 +21,6 @@ import uploadImageRoute from "./routes/upload.route";
 import portalRoute from "./routes/portal.route";
 import studiolabRoute from "./routes/studiolab.route";
 
-dotenv.config();
-
 async function main() {
   const server = fastify();
 
@@ -38,12 +35,10 @@ async function main() {
   console.log(__dirname);
 
   server.register((await import("@fastify/static")).default, {
-    root: path.join(path.dirname(__dirname), "public"),
-    prefix: "/public/",
+    root: path.join(path.dirname(__dirname), "static"),
+    prefix: "/static/",
     constraints: {
-      host: `${process.env.SERVER_HOST_NAME}${
-        process.env.SERVER_PORT ? `:${process.env.SERVER_PORT}` : ""
-      }`,
+      host: envConfig.SERVER_HOST_NAME,
     },
   });
 
@@ -60,10 +55,8 @@ async function main() {
   });
 
   // Routes
-  server.register((server) => {
-    server.get("/", (_, reply: FastifyReply) => {
-      reply.code(200).send("Hello, world!");
-    });
+  server.get("/", (_, reply: FastifyReply) => {
+    reply.code(200).send("Hello, world!");
   });
   server.register(aboutRoute, { prefix: "api/about" });
   server.register(newsRoute, { prefix: "api/news" });
