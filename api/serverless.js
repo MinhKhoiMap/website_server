@@ -5,6 +5,7 @@ dotenv.config();
 
 // Require the framework
 import Fastify from "fastify";
+import main from "../dist/src/app";
 
 // Instantiate Fastify with some config
 const app = Fastify({
@@ -12,7 +13,7 @@ const app = Fastify({
 });
 
 // Register your application as a normal plugin.
-app.register(import("../dist/src/app.js"));
+app.register(main);
 
 export default async (req, res) => {
   await app.ready();
