@@ -42,7 +42,7 @@ async function main() {
     prefix: "/public/",
     constraints: {
       host: `${process.env.SERVER_HOST_NAME}${
-        process.env.SERVER_PORT && `:${process.env.SERVER_PORT}`
+        process.env.SERVER_PORT ? `:${process.env.SERVER_PORT}` : ""
       }`,
     },
   });
