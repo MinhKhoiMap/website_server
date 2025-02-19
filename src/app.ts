@@ -24,7 +24,7 @@ import studiolabRoute from "./routes/studiolab.route";
 
 dotenv.config();
 
-(async function main() {
+async function main() {
   const server = fastify();
 
   const whitelist = ["*"];
@@ -85,4 +85,6 @@ dotenv.config();
     console.error(e);
     process.exit(1);
   }
-})();
+}
+
+export default main;
