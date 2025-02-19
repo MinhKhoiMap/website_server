@@ -24,7 +24,7 @@ import fastify, { FastifyInstance, FastifyReply } from "fastify";
 async function main(server: FastifyInstance) {
   // const server = fastify();
 
-  // console.log(server.version);
+  console.log(server.version);
 
   // const whitelist = ["*"];
 
