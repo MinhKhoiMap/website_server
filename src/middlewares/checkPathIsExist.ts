@@ -23,14 +23,13 @@ export default async function checkPathIsExist<ParamsType>(
 
   rootUrl = rootUrl.split("?")[0];
 
-  console.log(rootUrl);
-
   const fileName =
     request.params && Object.keys(request.params).length > 0
       ? url.substring(url.lastIndexOf("/") + 1).split("?")[0]
       : "";
 
   const fullDir = path.join(contentDir, lang, rootUrl);
+  console.log(fullDir);
   // If the path is not exits, 2 cases should be considered:
   // 1) the path is a file
   // 2) the path truely does not exist

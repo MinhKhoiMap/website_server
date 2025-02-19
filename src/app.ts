@@ -32,8 +32,6 @@ async function main(server: FastifyInstance) {
     credentials: true,
   });
 
-  console.log(__dirname);
-
   server.register((await import("@fastify/static")).default, {
     root: path.join(path.dirname(__dirname), "static"),
     prefix: "/static/",
