@@ -23,7 +23,6 @@
     "fast-jwt": "^5.0.2",
     "fastify": "^5.1.0",
     "fastify-type-provider-zod": "^4.0.2",
-    "fastify-zod": "^1.4.0",
     "got": "^14.4.5",
     "gray-matter": "^4.0.3",
     "hast-util-to-mdast": "^10.1.1",
