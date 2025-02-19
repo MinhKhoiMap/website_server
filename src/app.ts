@@ -41,7 +41,9 @@ async function main() {
     root: path.join(path.dirname(__dirname), "public"),
     prefix: "/public/",
     constraints: {
-      host: `${process.env.SERVER_HOST_NAME}:${process.env.SERVER_PORT}`,
+      host: `${process.env.SERVER_HOST_NAME}${
+        process.env.SERVER_PORT && `:${process.env.SERVER_PORT}`
+      }`,
     },
   });
 
