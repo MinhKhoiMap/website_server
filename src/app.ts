@@ -35,6 +35,8 @@ async function main() {
     credentials: true,
   });
 
+  console.log(__dirname);
+
   server.register((await import("@fastify/static")).default, {
     root: path.join(path.dirname(__dirname), "public"),
     prefix: "/public/",
@@ -75,16 +77,16 @@ async function main() {
   server.register(studiolabRoute, { prefix: "api/studiolab" });
   server.register(portalRoute, { prefix: "api/portal" });
 
-  try {
-    await server.listen({
-      port: Number(process.env.SERVER_PORT),
-      host: "0.0.0.0",
-    });
-    console.log(`Server ready at ${process.env.SERVER_PORT}`);
-  } catch (e) {
-    console.error(e);
-    process.exit(1);
-  }
+  // try {
+  //   await server.listen({
+  //     port: Number(process.env.SERVER_PORT),
+  //     host: "0.0.0.0",
+  //   });
+  //   console.log(`Server ready at ${process.env.SERVER_PORT}`);
+  // } catch (e) {
+  //   console.error(e);
+  //   process.exit(1);
+  // }
 }
 
 export default main;
