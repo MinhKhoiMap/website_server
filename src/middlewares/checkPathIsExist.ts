@@ -23,6 +23,8 @@ export default async function checkPathIsExist<ParamsType>(
 
   rootUrl = rootUrl.split("?")[0];
 
+  console.log(rootUrl);
+
   const fileName =
     request.params && Object.keys(request.params).length > 0
       ? url.substring(url.lastIndexOf("/") + 1).split("?")[0]
