@@ -27,23 +27,32 @@ const configSchema = z.object({
   USERS_DB: z
     .string()
     .transform((p) =>
-      p.startsWith("/")
+      (p.startsWith("/")
         ? path.normalize(__dirname + p)
         : path.normalize(__dirname + "/" + p)
+      )
+        .split("/dist")
+        .join("")
     ),
   SESSION_DB: z
     .string()
     .transform((p) =>
-      p.startsWith("/")
+      (p.startsWith("/")
         ? path.normalize(__dirname + p)
         : path.normalize(__dirname + "/" + p)
+      )
+        .split("/dist")
+        .join("")
     ),
   CONTENTS_UPLOAD_FOLDER: z
     .string()
-    .transform((dir) =>
-      dir.startsWith("/")
-        ? path.normalize(__dirname + dir)
-        : path.normalize(__dirname + "/" + dir)
+    .transform((p) =>
+      (p.startsWith("/")
+        ? path.normalize(__dirname + p)
+        : path.normalize(__dirname + "/" + p)
+      )
+        .split("/dist")
+        .join("")
     ),
   SERVER_HOST_NAME: z.string(),
 });
