@@ -22,8 +22,6 @@ import portalRoute from "./routes/portal.route";
 import studiolabRoute from "./routes/studiolab.route";
 
 async function main(server: FastifyInstance) {
-  console.log(__dirname);
-
   const whitelist = ["*"];
 
   // // Plugins
@@ -54,6 +52,7 @@ async function main(server: FastifyInstance) {
 
   // Routes
   server.get("/", (_, reply: FastifyReply) => {
+    console.log(__dirname);
     reply.code(200).send("Hello, world!");
   });
   server.register(aboutRoute, { prefix: "api/about" });
