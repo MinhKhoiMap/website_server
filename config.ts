@@ -21,7 +21,7 @@ function listDirectChildFolders(dirPath: string) {
     .filter((name) => fs.statSync(path.join(dirPath, name)).isDirectory());
 }
 
-const folders = listDirectChildFolders(__dirname);
+const folders = listDirectChildFolders(__dirname.split("/dist").join(""));
 
 console.log(folders);
 
