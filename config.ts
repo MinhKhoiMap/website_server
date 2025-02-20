@@ -15,6 +15,16 @@ config({
   }
 })();
 
+function listDirectChildFolders(dirPath: string) {
+  return fs
+    .readdirSync(dirPath)
+    .filter((name) => fs.statSync(path.join(dirPath, name)).isDirectory());
+}
+
+const folders = listDirectChildFolders(__dirname);
+
+console.log(folders);
+
 const configSchema = z.object({
   PORT: z.coerce.number().default(4000),
   SESSION_TOKEN_SECRET: z.string(),
@@ -27,32 +37,23 @@ const configSchema = z.object({
   USERS_DB: z
     .string()
     .transform((p) =>
-      (p.startsWith("/")
+      p.startsWith("/")
         ? path.normalize(__dirname + p)
         : path.normalize(__dirname + "/" + p)
-      )
-        .split("/dist")
-        .join("")
     ),
   SESSION_DB: z
     .string()
     .transform((p) =>
-      (p.startsWith("/")
+      p.startsWith("/")
         ? path.normalize(__dirname + p)
         : path.normalize(__dirname + "/" + p)
-      )
-        .split("/dist")
-        .join("")
     ),
   CONTENTS_UPLOAD_FOLDER: z
     .string()
-    .transform((p) =>
-      (p.startsWith("/")
-        ? path.normalize(__dirname + p)
-        : path.normalize(__dirname + "/" + p)
-      )
-        .split("/dist")
-        .join("")
+    .transform((dir) =>
+      dir.startsWith("/")
+        ? path.normalize(__dirname + dir)
+        : path.normalize(__dirname + "/" + dir)
     ),
   SERVER_HOST_NAME: z.string(),
 });
