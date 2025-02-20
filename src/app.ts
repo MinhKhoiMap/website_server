@@ -22,7 +22,7 @@ import portalRoute from "./routes/portal.route";
 import studiolabRoute from "./routes/studiolab.route";
 
 async function main(server: FastifyInstance) {
-  console.log(server.version);
+  console.log(__dirname);
 
   const whitelist = ["*"];
 
